@@ -9,15 +9,19 @@ import (
 func main() {
 	// Create New Router With `gin` Engine
 	router := gin.Default()
+	// Specifies where the html files are stored
 	router.LoadHTMLGlob("templates/*.html")
+	// the routers gives two args: 1.path in url. 2.function runner
 	router.GET("/hello", getHello)
 	router.GET("/hello/:name", getHelloName)
 	router.GET("/data", datas)
 	router.GET("/form", getForm)
 	router.POST("/form", postForm)
+	// we execute router on localhost:8000
 	err := router.Run("localhost:8080")
-	// if the router hase a error we shouting down that
+	// if the router hase error we shouting down that
 	if err != nil {
+		// exit from router and write router errors
 		log.Fatal(err)
 	}
 
@@ -32,6 +36,7 @@ func getHello(c *gin.Context) {
 // we get a parameter in url and write this to html file: `localhost:8080/hello/{Name}`
 func getHelloName(c *gin.Context) {
 	name := c.Param("name")
+	// we passed the html page on this router
 	c.HTML(http.StatusOK, "hello.html", name)
 }
 
