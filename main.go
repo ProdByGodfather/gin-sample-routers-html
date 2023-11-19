@@ -25,6 +25,7 @@ func main() {
 
 // it just return hello world
 func getHello(c *gin.Context) {
+	// as string we write `hello world`. this page does not use html page
 	c.String(http.StatusOK, "Hello World!")
 }
 
@@ -36,8 +37,9 @@ func getHelloName(c *gin.Context) {
 
 // this function return html page with many data with `gin.H`
 func datas(c *gin.Context) {
+	// originally we send data as map or dictionary with gin.H. in left side name of variable and right side value of variable
 	c.HTML(http.StatusOK, "data.html", gin.H{
-		"name":  "Mahdi",
+		"name":  "GodFather",
 		"food":  "Kebab",
 		"color": "Yellow",
 	})
@@ -45,11 +47,13 @@ func datas(c *gin.Context) {
 
 // this func just return html page with null objects ( it just a blank form for send data to post form )
 func getForm(c *gin.Context) {
+	// context or object is nil or null
 	c.HTML(http.StatusOK, "form.html", nil)
 }
 
 // we send data from getForm and write on html form with method POST
 func postForm(c *gin.Context) {
+	// The information is originally taken from the post method and stored in our variables
 	name := c.PostForm("name")
 	color := c.PostForm("color")
 
