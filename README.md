@@ -1,4 +1,4 @@
-# Sample Gin Framework
+# Sample Gin Framework | GO Lang
 
 Some simple router examples and practical examples with the gin framework and the go programming language.
 
